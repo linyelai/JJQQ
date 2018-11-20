@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="547.0" prefWidth="537.0" style="-fx-border-color: blue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linseven.controller.ChatWindowController">
+   <children>
+      <HBox prefHeight="48.0" prefWidth="515.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" stroke="#bfbfbf" strokeType="INSIDE" width="537.0" />
+      <Line endX="400.0" endY="550.0" layoutX="13.0" startX="400.0" startY="46.0" stroke="#9a9a9a" />
+      <Pane layoutX="2.0" layoutY="402.0" prefHeight="144.0" prefWidth="401.0">
+         <children>
+            <HBox layoutY="6.0" prefHeight="30.0" prefWidth="401.0" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="256.0" layoutY="108.0" mnemonicParsing="false" text="关闭" />
+            <Button fx:id="sendMsgBtn" layoutX="335.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#sendMsg" text="发送" />
+            <ScrollPane prefHeight="96.0" prefWidth="394.0">
+               <content>
+                  <Pane fx:id="sendMsgPane" prefHeight="90.0" prefWidth="391.0">
+                     <children>
+                        <TextField fx:id="msgText" layoutY="7.0" prefHeight="23.0" prefWidth="388.0" style="-fx-border-width: 0;" stylesheets="@../../../../resource/css/application.css">
+                           <styleClass>
+                              <String fx:value="textfield" />
+                              <String fx:value="noborder" />
+                           </styleClass></TextField>
+                        <TextField layoutX="3.0" layoutY="17.0" prefHeight="23.0" prefWidth="172.0" styleClass="noborder" stylesheets="@../../../../resource/css/application.css" />
+                     </children></Pane>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <ScrollPane id="chatSroollPane" fx:id="chatSroollPane" layoutY="49.0" prefHeight="350.0" prefWidth="401.0">
+         <content>
+            <VBox id="msgPane" fx:id="messageWindowView" maxHeight="348.0" prefHeight="315.0" prefWidth="392.0" style="-fx-max-height: 315;" stylesheets="@../../../../resource/css/application.css">
+               <styleClass>
+                  <String fx:value="textfield" />
+                  <String fx:value="noborder" />
+               </styleClass></VBox>
+         </content>
+      </ScrollPane>
+      <Label id="userIdLabel" fx:id="userIdLabel" layoutX="203.0" layoutY="12.0" prefHeight="23.0" prefWidth="92.0" text="userId" textFill="#f2f0f0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

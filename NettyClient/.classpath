@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_171"/>
+	<classpathentry kind="lib" path="D:/work/java/jar包/jboss/jboss-marshalling-1.3.0.CR9.jar"/>
+	<classpathentry kind="lib" path="D:/work/java/jar包/jboss/jboss-marshalling-serial-1.3.0.CR9.jar"/>
+	<classpathentry kind="lib" path="D:/work/java/jar包/netty-4.1.20.Final/netty-4.1.20.Final/jar/all-in-one/netty-all-4.1.20.Final.jar" sourcepath="D:/work/java/jar包/netty-4.1.20.Final/netty-4.1.20.Final/jar/all-in-one/netty-all-4.1.20.Final-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

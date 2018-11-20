@@ -1,0 +1,18 @@
+#msgTextArea .content
+{
+	-fx-background-color:#00ff00;
+}
+
+.textfield
+{
+   -fx-border-style:none;
+
+}
+.noborder{
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+   
+
+    
+}

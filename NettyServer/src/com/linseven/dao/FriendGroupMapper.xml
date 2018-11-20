@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linseven.dao.FriendGroupMapper">
+<resultMap type="com.linseven.model.FriendGroup" id="FriendGroup">
+	<result column="id" property="groupId" javaType="long" jdbcType="INTEGER"/>
+	<result column="name" property="groupName" javaType="string" jdbcType="VARCHAR"/>
+	<result column="userId" property="userId" javaType="long" jdbcType="INTEGER"/>
+</resultMap>
+ <select id="findFriendGroupByUserId" resultMap="FriendGroup">
+	 select id as groupId,name,userId from friendgroup
+	 <if test="userId!=null">
+	     where userId=#{userId}
+	 </if>
+  </select>
+</mapper>

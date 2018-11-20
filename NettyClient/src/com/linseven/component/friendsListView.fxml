@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="friendListPane" layoutY="140.0"
+ prefHeight="450.0" prefWidth="290.0" 
+ xmlns="http://javafx.com/javafx/8" 
+ fx:controller="com.linseven.controller.FriendListPaneController"
+ xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="430.0" prefWidth="290.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="好友列表">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="280.0">
+                     <children>
+                        <ScrollPane prefHeight="420.0" prefWidth="290.0">
+                           <content>
+                              <VBox fx:id="friendListBox" prefHeight="410.0" prefWidth="290.0" />
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="群组">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="280.0" />
+               </content>
+            </Tab>
+            <Tab text="消息">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="280.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
