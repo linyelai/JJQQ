@@ -1,10 +1,12 @@
 package com.linseven.cache;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.linseven.component.ChatDialog;
+import com.linseven.model.Friend;
 import com.linseven.model.Message;
 import com.linseven.model.UserInfo;
 
@@ -74,6 +76,36 @@ public void putMessage(Message msg)
  public void addDialog(Long userId,ChatDialog dialog)
  {
 	 currentDialog.put(userId,dialog);
+ }
+ 
+ public  static String getFriendName(Long friendId)
+ {
+	 String friendName = null;
+	 List<Friend> friends = currentUser.getFriends();
+	 for(Friend friend:friends)
+	 {
+		 if(friend.getId().equals(friendId))
+		 {
+			 friendName = friend.getName();
+			 break;
+		 }
+	 }
+	 return friendName;
+ }
+ 
+ public  static Long getFriendId(String friendName)
+ {
+	 Long friendId = null;
+	 List<Friend> friends = currentUser.getFriends();
+	 for(Friend friend:friends)
+	 {
+		 if(friend.getName()!=null&&friend.getName().equals(friendName))
+		 {
+			 friendId = friend.getId();
+			 break;
+		 }
+	 }
+	 return friendId;
  }
  
 }

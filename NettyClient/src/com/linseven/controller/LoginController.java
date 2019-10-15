@@ -54,18 +54,9 @@ public class LoginController implements Initializable
 	{
 		String userIdStr = userIdField.getText();
 		String passwordStr = passwordField.getText();
-		/*errorMsgLabel.setVisible(true);
-		UserInfo user= new UserInfo();
-		List<UserInfo> friends = new ArrayList<UserInfo>();
-		UserInfo friend = new UserInfo();
-		friend.setUsername("linseven");
-		friends.add(friend);*/
-		//user.setFriends(friends);
 		if(!MessageSender.isConnected){
 			
-			
 				Thread clientThread  = new Thread(new Runnable(){
-
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
@@ -79,21 +70,9 @@ public class LoginController implements Initializable
 						
 					}});
 				clientThread.start();
-				
-			
-
 		}
 		Message loginMsg = MessageFactory.buildLoginMsg(Long.parseLong(userIdStr), passwordStr);
-		CacheCenter.getInstance().putMessage(loginMsg);;
-		/*if(JJQQ.stage!=null)
-		{
-			MainWindow mainWindow = new MainWindow(user);
-			mainWindow.setVisible(true);
-			mainWindow.addFriend(user);
-			Scene scene = new Scene(mainWindow.getRoot());
-			JJQQ.stage.setScene(scene);
-		}*/
-		
+		CacheCenter.getInstance().putMessage(loginMsg);
 	}
 
 }

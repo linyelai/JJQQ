@@ -4,7 +4,11 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.io.IOException;
 
+import com.linseven.message.SendMessage;
 import com.linseven.model.Message;
+
+
+
 
 
 import javafx.fxml.FXML;
@@ -13,6 +17,8 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -20,8 +26,8 @@ import javafx.scene.text.Text;
 
 public class ChatMsgView extends Pane {
 	
-	@FXML
-	private TextArea msgTextArea;
+	
+	private Text msgItem;
 	private Pane page;
 	
 	public ChatMsgView()
@@ -39,31 +45,55 @@ public class ChatMsgView extends Pane {
 	    }
 	}
 	
-	public void addMsg(Message msg)
+	public void addMsg(SendMessage msg)
 	{
 		if(msg!=null)
 		{
-			String msgStr = (String) msg.getBody();
-			int len = msgStr.length();
-			StringBuffer buffer = new StringBuffer();
-			int row = getMsgStr(msgStr,buffer);
-			/*Text text = new Text();
-			text.setText(msgStr);
-			text.setLayoutX(45);
-			text.setLayoutY(30);
-			text.setWrappingWidth(290);
-			text.setAccessibleText("hhh");
-			text.setCursor(Cursor.TEXT);*/
-			msgTextArea.setText(msgStr);
-			msgTextArea.setWrapText(true);
-			Font f = new Font("宋体",Font.BOLD, 12);  
-			FontMetrics fm = sun.font.FontDesignMetrics.getMetrics(f);
+			int type = msg.getType();
+			String msgStr = msg.getContent();
+			ImageView imageView = new ImageView();
+			Image image = null;
 			double height =page.getPrefHeight();
-			msgTextArea.setPrefHeight((row+1)*fm.getHeight()+10);
-			if(row>1)
-			{
-				page.setPrefHeight(height+(row-1)*fm.getHeight()+15);
+			switch(type){
+			
+			case 1://文字
+				int len = msgStr.length();
+				StringBuffer buffer = new StringBuffer();
+				int row = getMsgStr(msgStr,buffer);
+				msgItem = new Text();
+				msgItem.setLayoutX(77);
+				msgItem.setLayoutY(29);
+				msgItem.setText(msgStr);
+				msgItem.setWrappingWidth(300);
+				Font f = new Font("宋体",Font.BOLD, 12);  
+				FontMetrics fm = sun.font.FontDesignMetrics.getMetrics(f);
+				
+				if(row>1)
+				{
+					page.setPrefHeight(height+(row-1)*fm.getHeight()+15);
+				}
+				page.getChildren().add(msgItem);
+				break;
+			case 2://表情
+				imageView.setLayoutX(77);
+				imageView.setLayoutY(20);
+				imageView.setFitWidth(22);
+				imageView.setFitHeight(22);
+				image = new Image("/resource/img/hj.png");
+				imageView.setImage(image);
+				page.getChildren().add(imageView);
+				break;
+			case 3:
+				imageView.setLayoutX(77);
+				imageView.setLayoutY(20);
+				imageView.setFitWidth(200);
+				imageView.setFitHeight(200);
+				image = new Image("file:"+msgStr);
+				imageView.setImage(image);
+				page.getChildren().add(imageView);
+				page.setPrefHeight(height+200);
 			}
+			
 			
 			
 		}

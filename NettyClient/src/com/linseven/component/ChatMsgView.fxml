@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -16,6 +17,6 @@
       </ImageView>
       <Label layoutX="77.0" text="linseven" textFill="#06d7ee" />
       <Label layoutX="169.0" text="2018年07月01日 17:45:12" />
-      <TextArea fx:id="msgTextArea" layoutX="52.0" layoutY="20.0" prefHeight="24.0" prefWidth="290.0" stylesheets="@../../../../resource/css/application.css" />
+      <!--  <Text fx:id="msgItem" layoutX="77.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" />-->
    </children>
 </Pane>
