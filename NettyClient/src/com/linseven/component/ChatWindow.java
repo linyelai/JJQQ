@@ -20,21 +20,11 @@ import javafx.scene.layout.VBox;
 
 public class ChatWindow extends VBox 
 {
-	/*@FXML
-	private VBox messageWindowView;
-	@FXML
-	private TextArea sendMsgTextArea;
-	@FXML
-	private Button sendMsgBtn;
-	@FXML
-	private ScrollPane chatSroollPane;*/
 	
 	private Parent root;
 	public ChatWindow()
 	{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/linseven/component/chatWindow.fxml"));
-	    //fxmlLoader.setRoot(this);
-	  //  fxmlLoader.setController(this);
 	    ObservableList<String> items =FXCollections.observableArrayList ();
 	    try 
 	    {

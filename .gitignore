@@ -26,7 +26,9 @@ target/
 *.tmp
 
 # system ignore
-.DS_Store
+.DS_Stores
 Thumbs.db
 ./NettyServer/target/
 ./NettyClient/target/
+#classpath
+*.class
