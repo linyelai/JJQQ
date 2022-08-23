@@ -23,8 +23,7 @@ public class MessageDecoder extends LengthFieldBasedFrameDecoder{
 	}
 	protected Object decode(ChannelHandlerContext ctx,ByteBuf in)throws Exception
 	{
-		 //对于业务解码器来说，调用父类LengthFieldBasedFrameDecoder的解码方法后，返回的就是整包消息或者为空，
-        //如果为空说明是个半包消息，直接返回继续由I/O线程读取后续的码流
+
         ByteBuf frame = (ByteBuf) super.decode(ctx, in);
         if (frame == null) 
         {

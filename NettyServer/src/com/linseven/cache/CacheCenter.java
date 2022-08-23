@@ -22,9 +22,9 @@ import com.linseven.model.UserInfo;
 
 public class CacheCenter 
 {
-	private static Map<Long,UserInfo> onlineUsers = new HashMap<Long,UserInfo>();//在线的用户key为用户账号
-	private static Map<Long,List<Message>> unsendMessages = new HashMap<Long,List<Message>>();//还没有发送的消息，key为目标用户账号
-	private static Map<String,Session> sessions = new HashMap<String,Session>();//回话缓存
+	private static Map<Long,UserInfo> onlineUsers = new HashMap<Long,UserInfo>();
+	private static Map<Long,List<Message>> unsendMessages = new HashMap<Long,List<Message>>();
+	private static Map<String,Session> sessions = new HashMap<String,Session>();
 	private static Map<Long,UserInfo> allUsers = new HashMap<Long,UserInfo>();
 	private static CacheCenter instance = new CacheCenter();
 	
@@ -37,7 +37,7 @@ public class CacheCenter
 		}
 		return instance;
 	}
-	//加载数据库数据
+
 	static{
 		
 		loadData();

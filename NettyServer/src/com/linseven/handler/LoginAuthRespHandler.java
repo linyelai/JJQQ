@@ -30,22 +30,22 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
    {
        
 	   	Message message = (Message) msg;
-        // 如果是握手请求消息，处理，其他消息透传
+        //
         if (message.getHeader() != null&& message.getHeader().getType() == MessageType.LOGIN_REQ) 
         {
-        		//请求登录，根据用户名密码判断是否可以登录
+        		//
         	LoginInfo loginInfo = (LoginInfo) message.getBody();
         	Long userId = loginInfo.getUserId();
         	String password = loginInfo.getPassword();
         	List<GroupInfo> groups = new ArrayList<GroupInfo>();
-        	//查询数据库
+        	//
         	UserInfo user = CacheCenter.getInstance().getUserByuserId(userId);      	
-        	//将用户信息放入在线缓存
+        	//
         	if(CacheCenter.getInstance().getOnlineUsersById(userId)==null)
         	{
         		CacheCenter.getInstance().addOnlineUser(user);
         	}
-        	//将session加入缓存
+        	//
         	
         	Session session = CacheCenter.getInstance().getSession(ctx.channel().id().asLongText());
         	if(session==null)
@@ -57,7 +57,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
             	session.setType(MessageType.LOGIN_RESP);
             	CacheCenter.getInstance().addSession(session);
         	}
-        	//根据用户id将未接收的信息发送到客户端
+        	//
         	List<Message> messages = CacheCenter.getInstance().getMessageByDestUserId(userId);
         	if(messages!=null&&messages.size()>0)
         	{
@@ -66,15 +66,10 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
         		{
         			
         			ChannelFuture  future = ctx.channel().writeAndFlush(unsendMsg);
-        			//发送失败怎么办？
+
         		}
         	}
-        	//发送个人信息
-        	
-        	//发送好友列表信息
-        	
-        	//发送群组信息
-        	
+
         	Message respMsg =  buildResponse(user) ;
         	ctx.writeAndFlush(respMsg);
         	

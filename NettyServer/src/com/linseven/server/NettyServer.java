@@ -22,7 +22,7 @@ public class NettyServer {
 
     public void bind() throws Exception 
     {
-        // 配置服务端的NIO线程组
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap b = new ServerBootstrap();
@@ -35,14 +35,13 @@ public class NettyServer {
                     public void initChannel(Channel ch)throws IOException{
                         ch.pipeline().addLast(new MessageDecoder(1024 * 1024, 4, 4));
                         ch.pipeline().addLast(new MessageEncoder());
-                       // ch.pipeline().addLast("readTimeoutHandler",new ReadTimeoutHandler(50));
                         ch.pipeline().addLast(new LoginAuthRespHandler());
                         ch.pipeline().addLast("HeartBeatHandler",new HeartBeatRespHandler());
                         ch.pipeline().addLast("ChatMsgHandler",new ChatMsgHandler());
                     }
                 });
 
-        // 绑定端口，同步等待成功
+
         b.bind(NettyConstant.REMOTEIP, NettyConstant.PORT).sync();
         System.out.println("Netty server start ok : " + (NettyConstant.REMOTEIP + " : " + NettyConstant.PORT));
     }

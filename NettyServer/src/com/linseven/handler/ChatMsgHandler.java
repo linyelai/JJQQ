@@ -62,14 +62,14 @@ public class ChatMsgHandler extends ChannelInboundHandlerAdapter
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		// TODO Auto-generated method stub
 		super.channelInactive(ctx);
-		//失去连接，将连接去掉
+
 	}
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		// TODO Auto-generated method stub
 		super.exceptionCaught(ctx, cause);
-		//异常，删除session
+
 		CacheCenter.getInstance().removeSession(ctx.channel().id().asLongText());
 		ctx.channel().close();
         ctx.fireExceptionCaught(cause);

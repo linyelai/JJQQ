@@ -16,13 +16,11 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter
 	 public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception
     {
         Message message = (Message) msg;
-        // 返回心跳应答消息
-        if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEART_BEAT_MSG) 
+        if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEART_BEAT_MSG)
         {
             System.out.println("Receive client heart beat message : ---> "+ message);
             
             Message heartBeat = buildHeatBeat();
-           // System.out.println("Send heart beat response message to client : ---> "+ heartBeat);
             ctx.writeAndFlush(heartBeat);
         } 
         else
